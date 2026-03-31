@@ -50,7 +50,7 @@ Aplikasi penyewaan alat outdoor berbasis web yang membantu pengguna dalam mencar
 ## Teknologi yang Digunakan
 
 -   **Backend** : Laravel
--   **Frontend** : Blade + Tailwind CSS
+-   **Frontend** : Blade + Bootstrap CSS
 -   **Database** : MySQL
 -   **QR Code** : Laravel QR Generator
 
