@@ -8,6 +8,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductImageController;
+use App\Http\Controllers\ContentController;
+use App\Http\Controllers\TermsConditionController;
 
 
 Route::get('/', function () {
@@ -50,4 +52,18 @@ Route::delete('/products/delete/{id}', [ProductController::class, 'destroy'])->n
 Route::get('/product-images/{productId}', [ProductImageController::class, 'index'])->name('product_images.index');
 Route::post('/product-images/store', [ProductImageController::class, 'store'])->name('product_images.store');
 Route::delete('/product-images/delete/{id}', [ProductImageController::class, 'destroy'])->name('product_images.delete');
+
+Route::get('/contents', [ContentController::class, 'index'])->name('contents.index');
+Route::get('/contents/create', [ContentController::class, 'create'])->name('contents.create');
+Route::post('/contents/store', [ContentController::class, 'store'])->name('contents.store');
+Route::get('/contents/edit/{id}', [ContentController::class, 'edit'])->name('contents.edit');
+Route::put('/contents/update/{id}', [ContentController::class, 'update'])->name('contents.update');
+Route::delete('/contents/delete/{id}', [ContentController::class, 'destroy'])->name('contents.delete');
+
+Route::get('/terms-conditions', [TermsConditionController::class, 'index'])->name('terms.index');
+Route::get('/terms-conditions/create', [TermsConditionController::class, 'create'])->name('terms.create');
+Route::post('/terms-conditions/store', [TermsConditionController::class, 'store'])->name('terms.store');
+Route::get('/terms-conditions/edit/{id}', [TermsConditionController::class, 'edit'])->name('terms.edit');
+Route::put('/terms-conditions/update/{id}', [TermsConditionController::class, 'update'])->name('terms.update');
+Route::delete('/terms-conditions/delete/{id}', [TermsConditionController::class, 'destroy'])->name('terms.delete');
 

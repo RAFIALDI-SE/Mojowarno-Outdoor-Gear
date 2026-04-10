@@ -17,6 +17,13 @@
             <a href="{{route('products.index')}}"><i class="fas fa-mountain"></i> Produk</a>
         </li>
 
+        <li class="{{ request()->is('contents*') ? 'active' : '' }}">
+            <a href="{{route('contents.index')}}"><i class="fas fa-edit"></i> Konten</a>
+        </li>
+
+        <li class="{{ request()->is('terms*') ? 'active' : '' }}">
+            <a href="{{route('terms.index')}}"><i class="fas fa-book"></i> Syarat & Ketentuan</a>
+        </li>
 
         <hr class="mx-3" style="color: rgba(255,255,255,0.1)">
 
