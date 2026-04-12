@@ -76,4 +76,28 @@ class ProductController extends Controller
             ->with('success', 'Produk berhasil dihapus');
     }
 
+    public function productAll(Request $request)
+    {
+        $query = Product::with(['images', 'category']);
+
+        if ($request->filled('search')) {
+            $query->where('name', 'like', '%' . $request->search . '%');
+        }
+
+
+        if ($request->filled('category')) {
+            $query->where('category_id', $request->category);
+        }
+
+        $products   = $query->latest()->paginate(12);
+        $categories = Category::orderBy('name')->get();
+
+        $terms = TermsCondition::all();
+
+        return view('member.product.all', compact(
+            'products',
+            'categories',
+            'terms'
+        ));
+    }
 }
