@@ -28,6 +28,8 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/products/all', [ProductController::class, 'productAll'])->name('products.all');
+
 
 
 
