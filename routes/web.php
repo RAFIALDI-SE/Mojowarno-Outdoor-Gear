@@ -10,6 +10,8 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductImageController;
 use App\Http\Controllers\ContentController;
 use App\Http\Controllers\TermsConditionController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
 
 
 Route::get('/', function () {
@@ -29,6 +31,12 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/products/all', [ProductController::class, 'productAll'])->name('products.all');
+Route::post('/cart/add/{product}', [CartController::class, 'add'])->name('cart.add');
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::put('/cart/update/{item}', [CartController::class, 'update'])->name('cart.update');
+Route::delete('/cart/remove/{item}', [CartController::class, 'remove'])->name('cart.remove');
+Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.store');
+Route::get('/checkout/success/{transaction}', [CheckoutController::class, 'success'])->name('checkout.success');
 
 
 

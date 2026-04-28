@@ -2,9 +2,33 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Transaction extends Model
 {
-    //
+    use HasFactory;
+
+    protected $fillable = [
+        'user_id','transaction_code','pickup_datetime','return_datetime',
+        'total_days','total_price','payment_status','status'
+    ];
+
+    protected $casts = [
+        'pickup_datetime' => 'datetime',
+        'return_datetime' => 'datetime',
+    ];
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
+
+    public function items() {
+        return $this->hasMany(TransactionItem::class);
+    }
+
+    public function qrCode() {
+        return $this->hasOne(QrCode::class);
+    }
+
 }

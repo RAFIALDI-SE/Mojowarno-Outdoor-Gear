@@ -96,7 +96,7 @@
                     </div>
 
                     <div class="card-footer bg-white border-0 pb-3">
-                        <form action="#" method="POST" class="position-relative" style="z-index: 11;">
+                        <form action="{{route('cart.add', $product->id)}}" method="POST" class="position-relative" style="z-index: 11;">
                             @csrf
                             <button type="submit" class="btn btn-navy w-100 py-2 shadow-sm fw-bold">
                                 <i class="fas fa-shopping-cart me-2"></i> Sewa Sekarang

@@ -4,19 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CartItem extends Model
+class TransactionItem extends Model
 {
     protected $fillable = [
-        'cart_id',
+        'transaction_id',
         'product_id',
         'qty',
-        'price_per_day'
+        'price_per_day',
+        'subtotal'
     ];
 
     // Relasi
-    public function cart()
+    public function transaction()
     {
-        return $this->belongsTo(Cart::class);
+        return $this->belongsTo(Transaction::class);
     }
 
     public function product()
