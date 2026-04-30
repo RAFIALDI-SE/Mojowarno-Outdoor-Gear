@@ -100,4 +100,13 @@ class ProductController extends Controller
             'terms'
         ));
     }
+
+    public function show($id)
+    {
+        $product = Product::with('images', 'category')->findOrFail($id);
+        $terms = TermsCondition::all();
+
+
+        return view('member.product.show', compact('product', 'terms'));
+    }
 }
