@@ -31,6 +31,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/products/all', [ProductController::class, 'productAll'])->name('products.all');
+Route::get('/produk/{id}', [ProductController::class, 'show'])->name('products.show');
 Route::post('/cart/add/{product}', [CartController::class, 'add'])->name('cart.add');
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::put('/cart/update/{item}', [CartController::class, 'update'])->name('cart.update');
