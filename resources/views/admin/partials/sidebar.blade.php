@@ -9,6 +9,16 @@
 
     <ul class="list-unstyled components mt-2">
 
+        <li class="{{ request()->is('dashboard') ? 'active' : '' }}">
+            <a href="{{ route('dashboard') }}"><i class="fas fa-th-large"></i> Dashboard</a>
+        </li>
+
+        <hr class="mx-3" style="color: rgba(255,255,255,0.1)">
+
+        <li class="{{ request()->is('sliders*') ? 'active' : '' }}">
+            <a href="{{ route('sliders.index') }}"><i class="fas fa-images"></i> Slider</a>
+        </li>
+
         <li class="{{ request()->is('categories*') ? 'active' : '' }}">
             <a href="{{route('categories.index')}}"><i class="fas fa-tags"></i> Kategori</a>
         </li>
