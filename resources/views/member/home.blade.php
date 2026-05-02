@@ -4,7 +4,17 @@
 
 @section('content')
 <div id="homeSlider" class="carousel slide carousel-fade shadow-sm" data-bs-ride="carousel">
-
+    <div class="carousel-inner">
+        @foreach($sliders as $key => $slider)
+            <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
+                <img src="{{ asset('storage/'.$slider->image) }}" class="d-block w-100" style="height: 450px; object-fit: cover; filter: brightness(70%);">
+                <div class="carousel-caption d-none d-md-block text-start mb-5 pb-5">
+                    <h1 class="display-4 fw-bold">{{ $slider->title }}</h1>
+                    <p class="fs-5">{{ $slider->subtitle }}</p>
+                </div>
+            </div>
+        @endforeach
+    </div>
 </div>
 
 <div class="container my-5 py-4" id="produk">

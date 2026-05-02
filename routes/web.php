@@ -12,6 +12,7 @@ use App\Http\Controllers\ContentController;
 use App\Http\Controllers\TermsConditionController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\SliderController;
 
 
 Route::get('/', function () {
@@ -77,4 +78,11 @@ Route::post('/terms-conditions/store', [TermsConditionController::class, 'store'
 Route::get('/terms-conditions/edit/{id}', [TermsConditionController::class, 'edit'])->name('terms.edit');
 Route::put('/terms-conditions/update/{id}', [TermsConditionController::class, 'update'])->name('terms.update');
 Route::delete('/terms-conditions/delete/{id}', [TermsConditionController::class, 'destroy'])->name('terms.delete');
+
+Route::get('/sliders', [SliderController::class, 'index'])->name('sliders.index');
+Route::get('/sliders/create', [SliderController::class, 'create'])->name('sliders.create');
+Route::post('/sliders', [SliderController::class, 'store'])->name('sliders.store');
+Route::get('/sliders/{id}/edit', [SliderController::class, 'edit'])->name('sliders.edit');
+Route::put('/sliders/{id}', [SliderController::class, 'update'])->name('sliders.update');
+Route::delete('/sliders/{id}', [SliderController::class, 'destroy'])->name('sliders.destroy');
 
