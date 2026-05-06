@@ -107,7 +107,7 @@
             </div>
         @empty
             <div class="col-12 text-center py-5">
-                <img src="https://illustrations.popsy.co/blue/searching.svg" style="width: 200px;" class="mb-4">
+                {{-- <img src="https://illustrations.popsy.co/blue/searching.svg" style="width: 200px;" class="mb-4"> --}}
                 <h5 class="text-muted">Maaf, produk "{{ request('search') }}" tidak ditemukan.</h5>
                 <a href="{{ route('products.all') }}" class="btn btn-outline-navy mt-3">Lihat Semua Produk</a>
             </div>

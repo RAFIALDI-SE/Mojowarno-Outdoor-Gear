@@ -145,7 +145,7 @@ class CheckoutController extends Controller
                             ->subject('Konfirmasi Checkout');
                 }
             );
-            return redirect()->route('cart.index')
+            return redirect()->route('transactions.show', $transaction)
                 ->with('success', 'Checkout berhasil, silakan tunggu konfirmasi admin');
 
         } catch (\Exception $e) {

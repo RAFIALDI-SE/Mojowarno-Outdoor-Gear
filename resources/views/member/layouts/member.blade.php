@@ -151,6 +151,93 @@
         input[type="number"]::-webkit-outer-spin-button {
             opacity: 1;
         }
+
+        /* Cards */
+.card-custom {
+    border: none;
+    border-radius: 15px;
+    transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+}
+
+.card-custom:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(12, 33, 64, 0.15);
+    transition: all 0.3s ease;
+}
+
+.card-custom:hover .fw-bold {
+    color: var(--light-blue);
+}
+
+.stretched-link::after {
+    z-index: 10;
+}
+
+/* Buttons */
+.btn-navy {
+    background-color: var(--navy);
+    color: var(--white);
+    border-radius: 8px;
+}
+
+.btn-navy:hover {
+    background-color: #1a3a63;
+    color: var(--light-blue);
+}
+
+.btn-outline-navy {
+    border: 2px solid var(--navy);
+    color: var(--navy);
+    background-color: transparent;
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+.btn-outline-navy:hover {
+    background-color: var(--navy);
+    color: var(--white);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(12, 33, 64, 0.2) !important;
+}
+
+/* Carousel */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgba(12, 33, 64, 0.5);
+    border-radius: 50%;
+    padding: 10px;
+    background-size: 60%;
+}
+
+.carousel-inner img {
+    transition: transform 0.5s ease;
+}
+
+/* Pagination */
+.pagination-navy .page-link {
+    color: var(--navy);
+    border: none;
+    margin: 0 3px;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.pagination-navy .page-item.active .page-link {
+    background-color: var(--navy);
+    color: var(--white);
+}
+
+.pagination-navy .page-link:hover {
+    background-color: var(--light-blue);
+    color: var(--navy);
+}
+
+.transition-all {
+    transition: all 0.3s ease-in-out;
+}
     </style>
 </head>
 <body>
