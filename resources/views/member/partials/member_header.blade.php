@@ -36,7 +36,7 @@
 
                 <ul class="dropdown-menu dropdown-menu-end border-0 shadow-sm rounded-3 mt-2">
                     <li><a class="dropdown-item py-2" href="#"><i class="fas fa-user-circle me-2"></i> Profile</a></li>
-                    <li><a class="dropdown-item py-2" href="#"><i class="fas fa-shopping-cart me-2"></i> Keranjang</a></li>
+                    <li><a class="dropdown-item py-2" href="{{route('cart.index')}}"><i class="fas fa-shopping-cart me-2"></i> Keranjang</a></li>
                     <li><a class="dropdown-item py-2" href="#"><i class="fas fa-history me-2"></i> Riwayat Sewa</a></li>
 
                     <li><a class="dropdown-item py-2" href="#" data-bs-toggle="modal" data-bs-target="#modalTerms">

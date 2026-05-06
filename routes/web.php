@@ -13,6 +13,7 @@ use App\Http\Controllers\TermsConditionController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\SliderController;
+use App\Http\Controllers\TransactionController;
 
 
 Route::get('/', function () {
@@ -39,6 +40,7 @@ Route::put('/cart/update/{item}', [CartController::class, 'update'])->name('cart
 Route::delete('/cart/remove/{item}', [CartController::class, 'remove'])->name('cart.remove');
 Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.store');
 Route::get('/checkout/success/{transaction}', [CheckoutController::class, 'success'])->name('checkout.success');
+Route::get('/transactions/{transaction}', [TransactionController::class, 'show'])->name('transactions.show');
 
 
 
@@ -85,4 +87,6 @@ Route::post('/sliders', [SliderController::class, 'store'])->name('sliders.store
 Route::get('/sliders/{id}/edit', [SliderController::class, 'edit'])->name('sliders.edit');
 Route::put('/sliders/{id}', [SliderController::class, 'update'])->name('sliders.update');
 Route::delete('/sliders/{id}', [SliderController::class, 'destroy'])->name('sliders.destroy');
+
+
 
