@@ -37,6 +37,16 @@
 
         <hr class="mx-3" style="color: rgba(255,255,255,0.1)">
 
+        <li class="{{ request()->is('admin/pickups*') ? 'active' : '' }}">
+            <a href="{{route('admin.pickups')}}"><i class="fas fa-clipboard-check"></i> Validasi Penyewaan</a>
+        </li>
+
+        <li class="{{ request()->is('admin/returns*') ? 'active' : '' }}">
+            <a href="{{route('admin.returns')}}"><i class="fas fa-undo"></i> Validasi Pengembalian</a>
+        </li>
+
+        <hr class="mx-3" style="color: rgba(255,255,255,0.1)">
+
         <li>
             <form action="{{ route('logout') }}" method="POST">
                 @csrf
