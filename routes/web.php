@@ -14,6 +14,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\AdminTransactionController;
 
 
 Route::get('/', function () {
@@ -88,5 +89,30 @@ Route::get('/sliders/{id}/edit', [SliderController::class, 'edit'])->name('slide
 Route::put('/sliders/{id}', [SliderController::class, 'update'])->name('sliders.update');
 Route::delete('/sliders/{id}', [SliderController::class, 'destroy'])->name('sliders.destroy');
 
+Route::get('/admin/pickups', [AdminTransactionController::class, 'pickupIndex'])
+        ->name('admin.pickups');
+
+Route::get('/admin/pickups/{transaction}', [AdminTransactionController::class, 'pickupShow'])
+        ->name('admin.pickups.show');
+
+Route::post('/admin/pickups/{transaction}/confirm', [AdminTransactionController::class, 'pickupConfirm'])
+        ->name('admin.pickups.confirm');
+
+
+
+Route::get('/admin/returns', [AdminTransactionController::class, 'returnIndex'])
+        ->name('admin.returns');
+
+Route::get('/admin/returns/{transaction}', [AdminTransactionController::class, 'returnShow'])
+        ->name('admin.returns.show');
+
+Route::post('/admin/returns/{transaction}/confirm', [AdminTransactionController::class, 'returnConfirm'])
+        ->name('admin.returns.confirm');
+Route::post('/admin/returns/{transaction}/pay', [AdminTransactionController::class, 'markAsPaid'])
+        ->name('admin.returns.pay');
+
+
+Route::get('/admin/scan/{code}', [AdminTransactionController::class, 'scanQr'])
+        ->name('admin.scan.qr');
 
 
