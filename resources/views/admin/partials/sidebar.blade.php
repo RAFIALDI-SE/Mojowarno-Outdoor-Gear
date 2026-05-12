@@ -37,6 +37,10 @@
 
         <hr class="mx-3" style="color: rgba(255,255,255,0.1)">
 
+        <li class="{{ request()->is('admin/transactions*') ? 'active' : '' }}">
+            <a href="{{route('admin.transactions')}}"><i class="fas fa-exchange-alt"></i> Transaksi</a>
+        </li>
+
         <li class="{{ request()->is('admin/pickups*') ? 'active' : '' }}">
             <a href="{{route('admin.pickups')}}"><i class="fas fa-clipboard-check"></i> Validasi Penyewaan</a>
         </li>
