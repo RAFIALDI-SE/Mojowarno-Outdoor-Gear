@@ -31,4 +31,8 @@ class Transaction extends Model
         return $this->hasOne(QrCode::class);
     }
 
+    public function returnItem() {
+        return $this->hasOne(ReturnItem::class);
+    }
+
 }

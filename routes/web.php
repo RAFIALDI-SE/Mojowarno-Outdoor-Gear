@@ -15,6 +15,7 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\AdminTransactionController;
+use App\Http\Controllers\AdminTransactionHistoryController;
 
 
 Route::get('/', function () {
@@ -116,3 +117,8 @@ Route::get('/admin/scan/{code}', [AdminTransactionController::class, 'scanQr'])
         ->name('admin.scan.qr');
 
 
+Route::get('/admin/transactions', [AdminTransactionHistoryController::class, 'index'])
+        ->name('admin.transactions');
+
+Route::get('/admin/transactions/{transaction}', [AdminTransactionHistoryController::class, 'show'])
+        ->name('admin.transactions.show');
