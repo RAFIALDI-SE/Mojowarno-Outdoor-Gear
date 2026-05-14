@@ -53,17 +53,33 @@ class CartController extends Controller
     // Update qty
     public function update(Request $request, CartItem $item)
     {
+
         $request->validate([
             'qty' => 'required|integer|min:1'
         ]);
 
         if ($request->qty > $item->product->stock) {
+
+            if ($request->wantsJson()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Jumlah melebihi stok yang tersedia (' . $item->product->stock . ')'
+                ], 422);
+            }
+
             return back()->with('error', 'Qty melebihi stok');
         }
 
         $item->update([
             'qty' => $request->qty
         ]);
+
+        if ($request->wantsJson()) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Keranjang diperbarui'
+            ]);
+        }
 
         return back()->with('success', 'Keranjang diperbarui');
     }

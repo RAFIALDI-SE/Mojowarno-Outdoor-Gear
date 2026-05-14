@@ -72,8 +72,8 @@
     </div>
 </div>
 
-<div class="container my-5 py-4" id="content">
-    <h3 class="section-title">Promo & Partner</h3>
+<div class="container my-5 py-4" id="informasi">
+    <h3 class="section-title">Informasi</h3>
     <div class="row g-4 mt-2">
         @foreach($contents as $content)
             <div class="col-12 col-md-6 col-lg-4">

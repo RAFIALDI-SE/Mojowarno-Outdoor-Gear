@@ -185,9 +185,6 @@
                 <div class="auth-footer text-center">
                     <span class="text-muted">Sudah punya akun? </span>
                     <a href="{{route ('login')}}" class="fw-bold text-decoration-none" style="color: var(--navy);">Login Disini</a>
-                    <div class="mt-2">
-                        <a href="/" class="small text-muted text-decoration-none"><i class="fas fa-home me-1"></i> Kembali ke Beranda</a>
-                    </div>
                 </div>
             </div>
 

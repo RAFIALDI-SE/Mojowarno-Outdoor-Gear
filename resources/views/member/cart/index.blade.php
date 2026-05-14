@@ -50,6 +50,10 @@
                         <i class="fas fa-shopping-cart me-2"></i> Keranjang Sewa
                     </h4>
 
+                    <a href="{{ route('home') }}" class="btn btn-outline-navy btn-sm rounded-pill px-3 fw-bold shadow-sm">
+                        <i class="fas fa-arrow-left me-1"></i> Kembali
+                    </a>
+
                     @if($cart->items->count())
                     <table class="table align-middle table-cart">
                         <thead class="text-muted small text-uppercase d-none d-md-table-header-group">
@@ -82,15 +86,26 @@
                                     Rp {{ number_format($item->price_per_day) }}
                                 </td>
                                 <td data-label="Jumlah Alat">
-                                    <form method="POST" action="{{ route('cart.update', $item->id) }}" class="d-inline-block">
-                                        @csrf
-                                        @method('PUT')
-                                        <input type="number" name="qty" value="{{ $item->qty }}"
-                                               min="1" max="{{ $item->product->stock }}"
-                                               class="form-control form-control-sm rounded-pill text-center border-0 bg-light"
-                                               style="width: 80px;"
-                                               onchange="this.form.submit()">
-                                    </form>
+                                    <div class="d-flex align-items-center justify-content-md-start justify-content-end">
+                                        <div class="d-flex align-items-center bg-light rounded-pill p-1 shadow-sm">
+                                            {{-- Tombol Minus --}}
+                                            <button type="button" class="btn btn-sm btn-white rounded-circle shadow-sm border-0 btn-qty"
+                                                    data-type="minus" data-id="{{ $item->id }}">
+                                                <i class="fas fa-minus text-navy" style="font-size: 0.7rem;"></i>
+                                            </button>
+
+                                            <input type="number" id="input-qty-{{ $item->id }}" name="qty" value="{{ $item->qty }}"
+                                                   min="1" max="{{ $item->product->stock }}"
+                                                   class="form-control form-control-sm border-0 bg-transparent text-center fw-bold"
+                                                   style="width: 45px; pointer-events: none;" readonly>
+
+                                            {{-- Tombol Plus --}}
+                                            <button type="button" class="btn btn-sm btn-white rounded-circle shadow-sm border-0 btn-qty"
+                                                    data-type="plus" data-id="{{ $item->id }}">
+                                                <i class="fas fa-plus text-navy" style="font-size: 0.7rem;"></i>
+                                            </button>
+                                        </div>
+                                    </div>
                                 </td>
                                 <td data-label="Subtotal" class="fw-bold text-primary text-nowrap">
                                     Rp {{ number_format($subtotal) }}
@@ -120,7 +135,7 @@
         </div>
 
         <div class="col-lg-4">
-            <div class="card border-0 shadow-sm rounded-4 sticky-top" style="top: 100px;">
+            <div class="card border-0 shadow-sm rounded-4 sticky-top" style="top: 100px;z-index: 10;">
                 <div class="card-body p-4">
                     <h5 class="fw-bold mb-4" style="color: var(--navy);">Ringkasan Sewa</h5>
 
@@ -135,15 +150,21 @@
                         @csrf
 
                         <div class="mb-3">
-                            <label class="form-label small fw-bold text-muted">Pilih Tanggal</label>
+                            <label class="form-label small fw-bold text-navy text-uppercase mb-2" style="letter-spacing: 1px;">
+                                <i class="far fa-calendar-alt me-1"></i> Tentukan Tanggal Sewa
+                            </label>
                             <div class="row g-2">
                                 <div class="col-6">
-                                    <input type="date" class="form-control form-control-sm border-0 bg-light rounded-3"
-                                           id="start_date" name="pickup_date" required min="{{ date('Y-m-d') }}">
+                                    <small class="text-muted d-block mb-1" style="font-size: 0.65rem;">Mulai</small>
+                                    <input type="date" class="form-control form-control-sm border shadow-sm rounded-3 fw-bold text-navy"
+                                           id="start_date" name="pickup_date" required min="{{ date('Y-m-d') }}"
+                                           style="background-color: #ffffff; border-color: var(--light-blue) !important;">
                                 </div>
                                 <div class="col-6">
-                                    <input type="date" class="form-control form-control-sm border-0 bg-light rounded-3"
-                                           id="end_date" name="return_date" required min="{{ date('Y-m-d') }}">
+                                    <small class="text-muted d-block mb-1" style="font-size: 0.65rem;">Selesai</small>
+                                    <input type="date" class="form-control form-control-sm border shadow-sm rounded-3 fw-bold text-navy"
+                                           id="end_date" name="return_date" required min="{{ date('Y-m-d') }}"
+                                           style="background-color: #ffffff; border-color: var(--light-blue) !important;">
                                 </div>
                             </div>
                         </div>
@@ -209,7 +230,7 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
     }
 
-    // ✅ Cek langsung dari value (AMAN)
+    //  Cek langsung dari value (AMAN)
     if (startDateInput.value === endDateInput.value) {
         checkoutBtn.disabled = true;
 
@@ -249,6 +270,43 @@ document.addEventListener('DOMContentLoaded', function () {
     @if(session('error') || $errors->any())
         window.scrollTo({ top: 0, behavior: 'smooth' });
     @endif
+});
+
+document.querySelectorAll('.btn-qty').forEach(button => {
+    button.addEventListener('click', function() {
+        const type = this.getAttribute('data-type');
+        const itemId = this.getAttribute('data-id');
+        const input = document.getElementById('input-qty-' + itemId);
+        let currentVal = parseInt(input.value);
+
+        if (type === 'plus') {
+            if (currentVal < input.max) currentVal++;
+        } else {
+            if (currentVal > 1) currentVal--;
+        }
+
+        input.value = currentVal;
+
+
+        fetch(`/cart/update/${itemId}`, {
+            method: 'PUT',
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({ qty: currentVal })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if(data.success) {
+                location.reload();
+            } else {
+                alert(data.message || 'Gagal update qty');
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    });
 });
 
 

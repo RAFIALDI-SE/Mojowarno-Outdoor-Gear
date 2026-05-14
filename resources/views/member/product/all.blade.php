@@ -85,7 +85,7 @@
                     </div>
 
                     <div class="card-body px-2">
-                        <a href="#" class="stretched-link"></a>
+                        <a href="{{route('products.show', $product->id)}}" class="stretched-link"></a>
 
                         <h6 class="fw-bold mb-1 mt-2 text-navy">{{ $product->name }}</h6>
                         <p class="text-muted small mb-3">{{ Str::limit($product->description, 45) }}</p>

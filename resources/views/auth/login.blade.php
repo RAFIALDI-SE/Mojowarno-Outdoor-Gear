@@ -165,9 +165,6 @@
 
                 <div class="auth-footer text-center">
                     <p class="mb-0 text-muted">Belum punya akun? <a href="{{ route('register') }}" class="fw-bold text-decoration-none" style="color: var(--navy);">Daftar</a></p>
-                    <div class="mt-3">
-                        <a href="/" class="small text-muted text-decoration-none"><i class="fas fa-home me-1"></i> Kembali ke Beranda</a>
-                    </div>
                 </div>
             </div>
 

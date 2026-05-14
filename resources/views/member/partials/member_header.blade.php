@@ -12,7 +12,7 @@
         <div class="collapse navbar-collapse" id="userNav">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item"><a class="nav-link" href="#produk">Produk</a></li>
-                <li class="nav-item"><a class="nav-link" href="#content">Promo</a></li>
+                <li class="nav-item"><a class="nav-link" href="#informasi">Informasi</a></li>
                 <li class="nav-item"><a class="nav-link" href="#lokasi">Lokasi</a></li>
             </ul>
 
@@ -35,9 +35,8 @@
 
 
                 <ul class="dropdown-menu dropdown-menu-end border-0 shadow-sm rounded-3 mt-2">
-                    <li><a class="dropdown-item py-2" href="#"><i class="fas fa-user-circle me-2"></i> Profile</a></li>
                     <li><a class="dropdown-item py-2" href="{{route('cart.index')}}"><i class="fas fa-shopping-cart me-2"></i> Keranjang</a></li>
-                    <li><a class="dropdown-item py-2" href="#"><i class="fas fa-history me-2"></i> Riwayat Sewa</a></li>
+                    <li><a class="dropdown-item py-2" href="{{route('transactions.index')}}"><i class="fas fa-history me-2"></i> Riwayat Sewa</a></li>
 
                     <li><a class="dropdown-item py-2" href="#" data-bs-toggle="modal" data-bs-target="#modalTerms">
                         <i class="fas fa-file-contract me-2"></i> Syarat & Ketentuan</a>
