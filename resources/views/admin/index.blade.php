@@ -58,21 +58,21 @@
         <div class="col-lg-8">
             <div class="card p-4 border-0 shadow-sm">
 
-                <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+                <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
                     <h5 class="fw-bold mb-0">Grafik Pendapatan</h5>
 
-                    <form method="GET" class="d-flex gap-2">
+                    <form method="GET" class="d-flex gap-2 flex-wrap flex-md-nowrap w-100 w-md-auto justify-content-md-end">
                         <input type="date"
                                name="start_date"
                                value="{{ request('start_date') ?? $startDate->format('Y-m-d') }}"
-                               class="form-control form-control-sm">
+                               class="form-control form-control-sm shadow-sm" style="flex: 1; min-width: 120px;">
 
                         <input type="date"
                                name="end_date"
                                value="{{ request('end_date') ?? $endDate->format('Y-m-d') }}"
-                               class="form-control form-control-sm">
+                               class="form-control form-control-sm shadow-sm" style="flex: 1; min-width: 120px;">
 
-                        <button class="btn btn-sm btn-navy">
+                        <button class="btn btn-sm btn-navy px-3 shadow-sm">
                             Filter
                         </button>
                     </form>
@@ -105,9 +105,9 @@
                     @endforeach
 
                 </div>
-                <form action="#" method="GET">
+                {{-- <form action="#" method="GET">
                     <button class="btn btn-outline-primary btn-sm mt-auto w-100">Lihat Semua User</button>
-                </form>
+                </form> --}}
             </div>
         </div>
     </div>

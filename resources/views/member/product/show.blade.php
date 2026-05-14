@@ -7,7 +7,7 @@
     <nav aria-label="breadcrumb" class="mb-4">
         <div class="d-flex justify-content-between align-items-center">
             <ol class="breadcrumb mb-0">
-                <li class="breadcrumb-item"><a href="/" class="text-decoration-none">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{route('home')}}" class="text-decoration-none">Home</a></li>
                 <li class="breadcrumb-item active">{{ $product->name }}</li>
             </ol>
             <a href="{{route('home')}}" class="btn btn-outline-navy btn-sm">

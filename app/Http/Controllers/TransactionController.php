@@ -19,5 +19,18 @@ class TransactionController extends Controller
 
         return view('member.transactions.show', compact('transaction', 'terms'));
     }
+
+    // LIST / RIWAYAT TRANSAKSI
+    public function index()
+    {
+        $transactions = Transaction::with('qrCode')
+            ->where('user_id', Auth::id())
+            ->latest()
+            ->get();
+        $terms = \App\Models\TermsCondition::all();
+
+
+        return view('member.transactions.index', compact('transactions','terms'));
+    }
 }
 

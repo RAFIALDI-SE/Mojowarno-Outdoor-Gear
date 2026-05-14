@@ -152,92 +152,231 @@
             opacity: 1;
         }
 
-        /* Cards */
-.card-custom {
-    border: none;
-    border-radius: 15px;
-    transition: 0.3s;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-    cursor: pointer;
-}
+                /* Cards */
+        .card-custom {
+            border: none;
+            border-radius: 15px;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            cursor: pointer;
+        }
 
-.card-custom:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 30px rgba(12, 33, 64, 0.15);
-    transition: all 0.3s ease;
-}
+        .card-custom:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(12, 33, 64, 0.15);
+            transition: all 0.3s ease;
+        }
 
-.card-custom:hover .fw-bold {
-    color: var(--light-blue);
-}
+        .card-custom:hover .fw-bold {
+            color: var(--light-blue);
+        }
 
-.stretched-link::after {
-    z-index: 10;
-}
+        .stretched-link::after {
+            z-index: 10;
+        }
 
-/* Buttons */
-.btn-navy {
-    background-color: var(--navy);
-    color: var(--white);
-    border-radius: 8px;
-}
+        /* Buttons */
+        .btn-navy {
+            background-color: var(--navy);
+            color: var(--white);
+            border-radius: 8px;
+        }
 
-.btn-navy:hover {
-    background-color: #1a3a63;
-    color: var(--light-blue);
-}
+        .btn-navy:hover {
+            background-color: #1a3a63;
+            color: var(--light-blue);
+        }
 
-.btn-outline-navy {
-    border: 2px solid var(--navy);
-    color: var(--navy);
-    background-color: transparent;
-    transition: all 0.3s ease;
-    letter-spacing: 1px;
-    font-weight: 600;
-}
+        .btn-outline-navy {
+            border: 2px solid var(--navy);
+            color: var(--navy);
+            background-color: transparent;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
 
-.btn-outline-navy:hover {
-    background-color: var(--navy);
-    color: var(--white);
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(12, 33, 64, 0.2) !important;
-}
+        .btn-outline-navy:hover {
+            background-color: var(--navy);
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(12, 33, 64, 0.2) !important;
+        }
 
-/* Carousel */
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-    background-color: rgba(12, 33, 64, 0.5);
-    border-radius: 50%;
-    padding: 10px;
-    background-size: 60%;
-}
+        /* Carousel */
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-color: rgba(12, 33, 64, 0.5);
+            border-radius: 50%;
+            padding: 10px;
+            background-size: 60%;
+        }
 
-.carousel-inner img {
-    transition: transform 0.5s ease;
-}
+        .carousel-inner img {
+            transition: transform 0.5s ease;
+        }
 
-/* Pagination */
-.pagination-navy .page-link {
-    color: var(--navy);
-    border: none;
-    margin: 0 3px;
-    border-radius: 8px;
-    font-weight: 600;
-}
+        /* Pagination */
+        .pagination-navy .page-link {
+            color: var(--navy);
+            border: none;
+            margin: 0 3px;
+            border-radius: 8px;
+            font-weight: 600;
+        }
 
-.pagination-navy .page-item.active .page-link {
-    background-color: var(--navy);
-    color: var(--white);
-}
+        .pagination-navy .page-item.active .page-link {
+            background-color: var(--navy);
+            color: var(--white);
+        }
 
-.pagination-navy .page-link:hover {
-    background-color: var(--light-blue);
-    color: var(--navy);
-}
+        .pagination-navy .page-link:hover {
+            background-color: var(--light-blue);
+            color: var(--navy);
+        }
 
-.transition-all {
-    transition: all 0.3s ease-in-out;
-}
+        .transition-all {
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Styling Tabel Keranjang & Transaksi */
+        .table thead th {
+            border: none;
+            background-color: #f8f9fa;
+            padding: 15px;
+        }
+
+        .table-cart td {
+            border-bottom: 1px solid #f8f9fa;
+        }
+
+        /* Responsive Table Cart */
+        @media (max-width: 768px) {
+            .table-cart thead {
+                display: none;
+            }
+
+            .table-cart tr {
+                display: block;
+                margin-bottom: 20px;
+                padding: 15px;
+                background: #fff;
+                border: 1px solid #eee;
+                border-radius: 15px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+            }
+
+            .table-cart td {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px 0 !important;
+                border: none !important;
+                border-bottom: 1px dashed #eee !important;
+            }
+
+            .table-cart td:last-child {
+                border-bottom: none !important;
+                justify-content: center;
+                margin-top: 10px;
+            }
+
+            .table-cart td::before {
+                content: attr(data-label);
+                font-weight: 700;
+                font-size: 0.8rem;
+                color: var(--navy);
+                text-transform: uppercase;
+                opacity: 0.6;
+            }
+
+            .table-cart td[data-label="Produk"] {
+                display: block;
+                border-bottom: 1px solid #f1f1f1 !important;
+            }
+
+            .table-cart td[data-label="Produk"]::before {
+                display: block;
+                margin-bottom: 10px;
+            }
+        }
+
+        /* Badge Status */
+        .badge-status {
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: inline-block;
+        }
+
+        .bg-pending {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+        .bg-success-custom {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .bg-unpaid {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .bg-paid {
+            background-color: var(--light-blue);
+            color: var(--navy);
+        }
+
+        /* Trx Cards */
+        .trx-card {
+            transition: all 0.3s ease;
+            border: 1px solid #f1f1f1 !important;
+        }
+
+        .trx-card:hover {
+            border-color: var(--light-blue) !important;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05) !important;
+        }
+
+        .trx-icon {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--light-blue);
+            color: var(--navy);
+            border-radius: 12px;
+        }
+
+        @media (min-width: 768px) {
+            .border-start-md {
+                border-left: 2px solid #f1f1f1;
+            }
+        }
+
+
+        .btn-white {
+            background-color: #fff;
+            transition: all 0.2s;
+        }
+        .btn-white:hover {
+            background-color: var(--light-blue);
+        }
+
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+        }
+
+        input[type=number] {
+        -moz-appearance: textfield;
+        }
     </style>
 </head>
 <body>
